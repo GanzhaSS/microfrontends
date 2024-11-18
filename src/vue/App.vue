@@ -10,24 +10,26 @@
   </div>
 </template>
 
+<!-- Подписываемся на изменения стора когда компонент замаунтиться -->
 <script>
 export default {
   data() {
     return {
       count: window.store.count,
-    }
+    };
   },
   methods: {
     increment() {
-      window.store.increment()
+      window.store.increment();
     },
   },
+
   mounted() {
     window.store.subscribe(() => {
-      this.count = window.store.count
-    })
+      this.count = window.store.count;
+    });
   },
-}
+};
 </script>
 
 <style scoped>

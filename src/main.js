@@ -1,18 +1,26 @@
-import { registerApplication, start } from 'single-spa'
-import { createStore } from './store/index.js'
+import { registerApplication, start } from 'single-spa';
+import { createStore } from './store/index.js';
 
-window.store = createStore()
+window.store = createStore();
 
 registerApplication(
   'vue',
   () => import('./vue/vue.app.js'),
-  () => location.pathname.startsWith('/')
-)
+  () => location.pathname.startsWith('/'),
+);
 
 registerApplication(
   'react',
   () => import('./react/react.app.js'),
-  () => location.pathname.startsWith('/')
-)
+  () => location.pathname.startsWith('/'),
+);
+registerApplication(
+  'react-ts',
+  () => import('./react-ts/src/root.tsx'),
+  () => location.pathname.startsWith('/'),
+  // name: 'my-react-app',
+  // app: () => System.import('my-react-app'),
+  // activeWhen: ['/ts'],
+);
 
-start()
+start();
